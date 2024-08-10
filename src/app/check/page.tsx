@@ -108,20 +108,27 @@ const Check: React.FC = () => {
             onChange={handleWeightChange}
             className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 text-black border border-gray-300 rounded-xl"
           />
-          <button onClick={handleAddWeight}>추가</button>
+          <button
+            onClick={handleAddWeight}
+            className="flex w-32 h-12 mt-8 bg-[#5d548e] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
+          >
+            추가
+          </button>
           <h3 className="mt-20 text-bold text-xl text-black">
             점선은 표준 그래프
           </h3>
           <p className="text-bold text-base">대충 그래프 ui</p>
-          <p>대충 게이지 ui</p>
           <div className="chart">
             <Line data={data} options={options} />
           </div>
         </div>
+        <button
+          onClick={() => router.push("/search")}
+          className="w-full bg-[#ffa6a6] mt-12 sm:mt-24 tb:mt-28 lg:mt-44 2xs:py-3 py-4 tb:py-5 lg:py-6 2xs:text-[12px] xs:text-[14px] 2sm:text-[16px] sm:text-[16px] tb:text-[18px] lg:text-[24px] text-white rounded-2xl font-bold"
+        >
+          다음
+        </button>
       </div>
-      <button className="w-full bg-[#ffa6a6] mt-12 sm:mt-24 tb:mt-28 lg:mt-44 2xs:py-3 py-4 tb:py-5 lg:py-6 2xs:text-[12px] xs:text-[14px] 2sm:text-[16px] sm:text-[16px] tb:text-[18px] lg:text-[24px] text-white rounded-2xl font-bold">
-        다음
-      </button>
     </>
   );
 };

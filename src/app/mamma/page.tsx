@@ -111,13 +111,12 @@ const Mamma: React.FC = () => {
         />
         <button
           onClick={handleManualSubmit}
-          className="flex w-full h-12 mt-8 bg-[#5d548e] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
+          className="flex w-32 h-12 mt-8 bg-[#5d548e] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
         >
           메뉴 이름 제출
         </button>
 
-        {/* 이미지 업로드 */}
-        <div className="image-upload flex flex-col gap-5">
+        <div className="image-upload flex flex-col gap-3 mt-10">
           <label className="text-black">사진 선택</label>
           <input
             type="file"
