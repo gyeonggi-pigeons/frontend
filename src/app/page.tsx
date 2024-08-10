@@ -10,7 +10,7 @@ const Main: React.FC = () => {
     <>
       <SplashScreen />
       <div className="w-full h-screen bg-gray-200 relative flex flex-col 2xs:px-8 xs:px-10 2sm:px-7 sm:px-12 tb:px-24 lg:px-32 xl:px-48 2xs:pt-20 xs:pt-24 pt-28 tb:pt-28 lg:pt-36 pb-8 items-center justify-center">
-        <h1 className="text-4xl font-black">Main</h1>
+        <h1 className="text-4xl font-black text-black">Main</h1>
 
         <button
           onClick={() => router.push("/input")}
