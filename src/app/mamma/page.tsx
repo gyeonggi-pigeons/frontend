@@ -148,6 +148,13 @@ const Mamma: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <button
+        onClick={() => router.push("/needs")}
+        className="w-full bg-[#ffa6a6] mt-12 sm:mt-24 tb:mt-28 lg:mt-44 2xs:py-3 py-4 tb:py-5 lg:py-6 2xs:text-[12px] xs:text-[14px] 2sm:text-[16px] sm:text-[16px] tb:text-[18px] lg:text-[24px] text-white rounded-2xl font-bold"
+      >
+        다음
+      </button>
     </div>
   );
 };
