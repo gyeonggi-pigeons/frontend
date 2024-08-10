@@ -8,24 +8,23 @@ const Main: React.FC = () => {
   const [name, setName] = useState<string>("");
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 5) {
+    if (e.target.value.length <= 20) {
       setName(e.target.value);
     }
   };
 
   const handleSubmit = async () => {
     if (name.trim() === "") {
-      alert("모든 내용을 입력해주세요.");
+      alert("Everything is requiredred");
       return;
     }
 
     try {
-      // alert("완료되었습니다!");
       setName("");
       router.push("/onboarding");
     } catch (error) {
-      console.error("Error submitting recommendation:", error);
-      alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
+      console.error("Error submitting name:", error);
+      alert("Error submitting name");
     }
   };
 
@@ -34,12 +33,10 @@ const Main: React.FC = () => {
       <SplashScreen />
       <div className="w-full h-screen bg-[#FEFFFE] relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 2xs:pt-16 xs:pt-20 pt-20 pb-8 items-start justify-start">
         <h3 className="text-lg text-[#7B63FF] font-semibold leading-normal mb-2">
-          안녕하세요!
+          Hello!
         </h3>
         <h1 className="text-2xl text-black font-semibold leading-normal">
-          소중한 산모님을
-          <br />
-          어떻게 불러드리면 될까요?
+          How can I call you?
         </h1>
 
         <div className="mt-10 w-full flex flex-col relative">
@@ -47,7 +44,7 @@ const Main: React.FC = () => {
             type="text"
             id="name"
             value={name}
-            placeholder="산모님의 이름을 입력해주세요"
+            placeholder="Please enter your name"
             onChange={handleNameChange}
             className={`mt-2 px-2 pt-6 pb-3 pl-4 text-black placeholder-[#999999] rounded-xl relative
             ${
@@ -62,10 +59,10 @@ const Main: React.FC = () => {
             className="absolute left-4 top-2 px-1 pt-2 pb-3 transition-all duration-300 ease-in-out 
            text-xs  text-[#7D7D7D]"
           >
-            이름
+            Name
           </label>
           <p className="mt-2 text-[#B3B3B3] font-normal text-sm leading-normal text-center">
-            최대 5자까지 입력 가능해요
+            You can enter up to 20 characters
           </p>
         </div>
 
@@ -78,7 +75,7 @@ const Main: React.FC = () => {
           }`}
           disabled={!name.trim()}
         >
-          다음
+          Next
         </button>
       </div>
     </>

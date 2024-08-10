@@ -19,6 +19,9 @@ const config: Config = {
         "2sm": { min: "390px", max: "560px" }, // Wide Mobile
         web: { min: "561px" }, // Web
       },
+      fontFamily: {
+        customFont: ["SUIT-Regular", "normal"],
+      },
     },
   },
   plugins: [],

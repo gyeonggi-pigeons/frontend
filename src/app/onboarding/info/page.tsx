@@ -5,7 +5,7 @@ import prev from "../../../../public/images/icon-prev.png";
 
 const Info: React.FC = () => {
   const router = useRouter();
-  const [dday, setDday] = useState<string>("");
+  const [dday, setDday] = useState<string>("2024-08-11");
   const [births, setBirths] = useState<string>("");
   const [gestationalDiabetes, setGestationalDiabetes] = useState<string>("");
 
@@ -30,19 +30,18 @@ const Info: React.FC = () => {
 
   const handleSubmit = async () => {
     if (!dday || births.trim() === "" || gestationalDiabetes === "") {
-      alert("모든 내용을 입력해주세요.");
+      alert("Everything is requiredred");
       return;
     }
 
     try {
-      alert("완료되었습니다!");
       setDday("");
       setBirths("");
       setGestationalDiabetes("");
       router.push("/");
     } catch (error) {
       console.error("Error submitting recommendation:", error);
-      alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
+      alert("Error submitting elements");
     }
   };
 
@@ -62,11 +61,13 @@ const Info: React.FC = () => {
           />
         </div>
         <h1 className="text-2xl text-black font-semibold leading-normal">
-          현재 임신 중이시네요!
+          You're currently pregnant!
           <br />
-          추가 정보를 입력해주세요.
+          Please enter more information.
         </h1>
-        <p className="mt-2 text-[#757575] font-normal 2xs:text-xs xs:text-xs text-sm leading-normal"></p>
+        <p className="mt-2 text-[#757575] font-normal 2xs:text-xs xs:text-xs text-sm leading-normal">
+          Please enter more information.
+        </p>
 
         <div className="mt-10 w-full flex flex-col gap-4 relative">
           <div className="relative w-full">
@@ -82,7 +83,7 @@ const Info: React.FC = () => {
               htmlFor="dday"
               className="absolute left-4 top-4 text-xs text-[#7D7D7D] transition-all duration-300"
             >
-              출산 예정일
+              Due date
             </label>
           </div>
 
@@ -100,7 +101,7 @@ const Info: React.FC = () => {
               htmlFor="births"
               className="absolute left-4 top-4 text-xs text-[#7D7D7D] transition-all duration-300"
             >
-              단태아, 다태아
+              Single birth, Twin birth
             </label>
             <span className="absolute right-4 bottom-3 text-xs text-[#B3B3B3]">
               <svg
@@ -127,32 +128,34 @@ const Info: React.FC = () => {
           {bottomSheetVisible && (
             <div className="fixed bottom-0 left-0 w-full 2xs:h-[48vh] xs:h-[56vh] 2sm:h-[50vh] web:h-[56vh] web:px-20 bg-white 2xs:px-12 xs:px-8 2sm:px-10 pt-4 pb-6 rounded-t-3xl shadow-lg z-50">
               <h3 className="my-6 text-[#1E1E1E] font-semibold text-sm web:text-base leading-normal">
-                해당하는 항목을 선택해주세요
+                Please select the appropriate item
               </h3>
               <ul className="flex flex-col gap-6 mt-4 web:gap-8 web:mt-6">
                 <li
                   className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
-                  onClick={() => handleBottomSheetSelect("단태아")}
+                  onClick={() => handleBottomSheetSelect("A single baby")}
                 >
-                  단태아
+                  A single baby
                 </li>
                 <li
                   className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
-                  onClick={() => handleBottomSheetSelect("쌍둥이")}
+                  onClick={() => handleBottomSheetSelect("Twins")}
                 >
-                  쌍둥이
+                  Twins
                 </li>
                 <li
                   className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
-                  onClick={() => handleBottomSheetSelect("세쌍둥이")}
+                  onClick={() => handleBottomSheetSelect("Triplet")}
                 >
-                  세쌍둥이
+                  Triplet
                 </li>
                 <li
                   className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] "
-                  onClick={() => handleBottomSheetSelect("네쌍둥이 이상")}
+                  onClick={() =>
+                    handleBottomSheetSelect("More than four twins")
+                  }
                 >
-                  네쌍둥이 이상
+                  More than four twins
                 </li>
               </ul>
             </div>
@@ -161,28 +164,28 @@ const Info: React.FC = () => {
 
         <div className="mt-4 w-full flex flex-col items-start">
           <h3 className="text-[#757575] font-normal text-xs leading-normal mb-2">
-            임당 진단 여부
+            Diagnosis of gestational diabetes
           </h3>
           <div className="w-full flex flex-row gap-4">
             <button
-              onClick={() => handleGestationalDiabetesChange("네")}
+              onClick={() => handleGestationalDiabetesChange("Yes")}
               className={`w-full py-4 rounded-lg ${
-                gestationalDiabetes === "네"
+                gestationalDiabetes === "Yes"
                   ? "bg-[#EAE6FF] text-[#4331A4]"
                   : "bg-[#F5F5F5] text-[#B3B3B3]"
               }`}
             >
-              네
+              Yes
             </button>
             <button
-              onClick={() => handleGestationalDiabetesChange("아니요")}
+              onClick={() => handleGestationalDiabetesChange("No")}
               className={`w-full py-4 rounded-lg ${
-                gestationalDiabetes === "아니요"
+                gestationalDiabetes === "No"
                   ? "bg-[#EAE6FF] text-[#4331A4]"
                   : "bg-[#F5F5F5] text-[#B3B3B3]"
               }`}
             >
-              아니요
+              No
             </button>
           </div>
         </div>
@@ -196,7 +199,7 @@ const Info: React.FC = () => {
           }`}
           disabled={!dday || !births || !gestationalDiabetes}
         >
-          시작하기
+          Start
         </button>
       </div>
     </>
