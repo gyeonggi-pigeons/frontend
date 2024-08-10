@@ -56,12 +56,12 @@ const Info: React.FC = () => {
           <img
             src={prev.src}
             onClick={handleBack}
-            alt=""
+            alt="prev"
             className="w-[1.6rem] h-auto"
           />
         </div>
         <h1 className="text-2xl text-black font-semibold leading-normal">
-          You're currently pregnant!
+          You&apos;re currently pregnant!
           <br />
           Please enter more information.
         </h1>

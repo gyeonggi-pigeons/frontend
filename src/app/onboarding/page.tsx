@@ -98,7 +98,8 @@ const Onboarding: React.FC = () => {
           Please enter your information.
         </h1>
         <p className="mt-2 text-[#757575] font-normal 2xs:text-xs xs:text-xs text-sm leading-normal">
-          We'll give you a weight management plan that's right for you.
+          We&apos;ll give you a weight management plan that&apos;s right for
+          you.
         </p>
 
         <div className="mt-10 w-full flex flex-col relative">

@@ -148,7 +148,7 @@ const Mamma: React.FC = () => {
           </div>
         )} */}
 
-        {imagePreview && (
+        {/* {imagePreview && (
           <div className="image-preview mt-4">
             <p>미리보기:</p>
             <img
@@ -157,7 +157,7 @@ const Mamma: React.FC = () => {
               className="w-32 h-32 object-cover rounded-lg"
             />
           </div>
-        )}
+        )} */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {allMenus.map((menu, index) => (
