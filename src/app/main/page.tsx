@@ -5,6 +5,7 @@ import preg from "../../../public/images/img-main-preg.png";
 import searchIcon from "../../../public/images/icon-search.png";
 import addIcon from "../../../public/images/icon-plus.png";
 import CaloriesChart from "../components/CaloriesChart";
+import BottomTabs from "../components/BottomTabs";
 
 const Main: React.FC = () => {
   const [menuName, setMenuName] = useState<string>("");
@@ -260,6 +261,7 @@ const Main: React.FC = () => {
           </div>
         </div>
       </div>
+      <BottomTabs />
     </>
   );
 };
