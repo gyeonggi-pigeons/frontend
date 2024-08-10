@@ -4,6 +4,7 @@ import axios from "axios";
 import preg from "../../../public/images/img-main-preg.png";
 import searchIcon from "../../../public/images/icon-search.png";
 import addIcon from "../../../public/images/icon-plus.png";
+import CaloriesChart from "../components/CaloriesChart";
 
 const Main: React.FC = () => {
   const [menuName, setMenuName] = useState<string>("");
@@ -15,7 +16,7 @@ const Main: React.FC = () => {
   });
   const [calories, setCalories] = useState<{ [key: string]: string }>({});
   const [weightStatus, setWeightStatus] = useState<number>(10.19);
-  const [loading, setLoading] = useState<string | null>(null); // Use string to keep track of which meal is loading
+  const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleMenuNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +42,7 @@ const Main: React.FC = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setLoading(mealType); // Set loading to the current meal type
+    setLoading(mealType);
     setError(null);
 
     try {
@@ -58,7 +59,7 @@ const Main: React.FC = () => {
       console.error("Error analyzing image:", err);
       setError("이미지 분석에 실패했습니다.");
     } finally {
-      setLoading(null); // Reset loading after processing
+      setLoading(null);
     }
   };
 
@@ -117,7 +118,7 @@ const Main: React.FC = () => {
     const total = Object.values(calories)
       .map((cal) => parseFloat(cal))
       .reduce((acc, val) => acc + val, 0);
-    return total.toFixed(1); // Show total with 1 decimal place
+    return total.toFixed(1);
   };
 
   const getWeightStatusText = () => {
@@ -157,12 +158,7 @@ const Main: React.FC = () => {
         </div>
         {cal.length < 1 && (
           <label className="flex flex-col items-center cursor-pointer mt-2">
-            <img
-              src={addIcon.src}
-              alt="Add"
-              className="w-8 h-8"
-              // onClick={() => document.getElementById(`upload-${id}`)?.click()}
-            />
+            <img src={addIcon.src} alt="Add" className="w-8 h-8" />
             <input
               id={`upload-${id}`}
               type="file"
@@ -191,12 +187,37 @@ const Main: React.FC = () => {
             Your baby is growing up healthy
           </h1>
           {getWeightStatusText()}
-          <div className="w-full flex flex-row justify-between gap-10 mt-4">
-            <div className="text-lg font-semibold">
-              Total Calories: {getTotalCalories()} kcal
+          <div className="w-full flex flex-row pt-8 justify-between gap-4">
+            <div className="flex flex-row gap-6">
+              <div>
+                <CaloriesChart totalCalories={parseFloat(getTotalCalories())} />
+              </div>
+
+              <div>
+                <ul className="flex flex-col gap-3">
+                  <li>
+                    <p className="text-[#AFA2C5] font-medium text-sm">Goal</p>
+                    <p className="text-[#0000008F] font-semibold text-base">
+                      kcal
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-[#AFA2C5] font-medium text-sm">Eat</p>
+                    <p className="text-[#0000008F] font-semibold text-base">
+                      {getTotalCalories()}kcal
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-[#AFA2C5] font-medium text-sm">Left</p>
+                    <p className="text-[#0000008F] font-semibold text-base">
+                      kcal
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div>
-              <img src={preg.src} alt="preg" className="w-[10rem] h-auto" />
+              <img src={preg.src} alt="preg" className="w-[8.4rem] h-auto" />
             </div>
           </div>
 
