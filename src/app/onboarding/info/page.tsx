@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import prev from "../../../../public/images/icon-prev.png";
 
 const Info: React.FC = () => {
   const router = useRouter();
@@ -45,18 +46,27 @@ const Info: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <>
-      <div className="w-full h-screen bg-[#FEFFFE] relative flex flex-col 2xs:px-8 xs:px-10 2sm:px-7 sm:px-12 tb:px-24 lg:px-32 xl:px-48 2xs:pt-20 xs:pt-24 pt-24 tb:pt-28 lg:pt-36 pb-8 items-start justify-start">
-        <h3 className="text-xl text-[#7B63FF] font-semibold">안녕하세요!</h3>
+      <div className="w-full min-h-screen bg-[#FEFFFE] relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 2xs:pt-16 xs:pt-20 pt-20 pb-8 items-start justify-start">
+        <div className="mb-4">
+          <img
+            src={prev.src}
+            onClick={handleBack}
+            alt=""
+            className="w-[1.6rem] h-auto"
+          />
+        </div>
         <h1 className="text-2xl text-black font-semibold leading-normal">
           현재 임신 중이시네요!
           <br />
           추가 정보를 입력해주세요.
         </h1>
-        <p className="mt-2 text-[#757575] font-normal text-sm leading-normal">
-          더욱 안전하고 정확한 계획을 세워드려요.
-        </p>
+        <p className="mt-2 text-[#757575] font-normal 2xs:text-xs xs:text-xs text-sm leading-normal"></p>
 
         <div className="mt-10 w-full flex flex-col gap-4 relative">
           <div className="relative w-full">
@@ -115,31 +125,31 @@ const Info: React.FC = () => {
             <div className="fixed inset-0 bg-black opacity-20 z-40"></div>
           )}
           {bottomSheetVisible && (
-            <div className="fixed bottom-0 left-0 w-full h-[48vh] bg-white px-4 pt-4 pb-6 rounded-t-3xl shadow-lg z-50">
-              <h3 className="my-6 text-[#1E1E1E] font-medium text-sm leading-normal">
+            <div className="fixed bottom-0 left-0 w-full 2xs:h-[48vh] xs:h-[56vh] 2sm:h-[50vh] web:h-[56vh] web:px-20 bg-white 2xs:px-12 xs:px-8 2sm:px-10 pt-4 pb-6 rounded-t-3xl shadow-lg z-50">
+              <h3 className="my-6 text-[#1E1E1E] font-semibold text-sm web:text-base leading-normal">
                 해당하는 항목을 선택해주세요
               </h3>
-              <ul className="flex flex-col gap-6 mt-4 ">
+              <ul className="flex flex-col gap-6 mt-4 web:gap-8 web:mt-6">
                 <li
-                  className="w-full h-auto text-base pt-2 pb-4 text-[#1C1C1C] border-b border-[#EFEFEF]"
+                  className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
                   onClick={() => handleBottomSheetSelect("단태아")}
                 >
                   단태아
                 </li>
                 <li
-                  className="w-full h-auto text-base pt-2 pb-4 text-[#1C1C1C] border-b border-[#EFEFEF]"
+                  className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
                   onClick={() => handleBottomSheetSelect("쌍둥이")}
                 >
                   쌍둥이
                 </li>
                 <li
-                  className="w-full h-auto text-base pt-2 pb-4 text-[#1C1C1C] border-b border-[#EFEFEF]"
+                  className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] border-b border-[#EFEFEF]"
                   onClick={() => handleBottomSheetSelect("세쌍둥이")}
                 >
                   세쌍둥이
                 </li>
                 <li
-                  className="w-full h-auto text-base pt-2 pb-4 text-[#1C1C1C] "
+                  className="w-full h-auto text-base pt-2 pb-4 web:pb-6 text-[#1C1C1C] "
                   onClick={() => handleBottomSheetSelect("네쌍둥이 이상")}
                 >
                   네쌍둥이 이상
@@ -149,14 +159,14 @@ const Info: React.FC = () => {
           )}
         </div>
 
-        <div className="mt-8 w-full flex flex-col items-start">
+        <div className="mt-4 w-full flex flex-col items-start">
           <h3 className="text-[#757575] font-normal text-xs leading-normal mb-2">
             임당 진단 여부
           </h3>
           <div className="w-full flex flex-row gap-4">
             <button
               onClick={() => handleGestationalDiabetesChange("네")}
-              className={`w-full py-2 rounded-lg ${
+              className={`w-full py-4 rounded-lg ${
                 gestationalDiabetes === "네"
                   ? "bg-[#EAE6FF] text-[#4331A4]"
                   : "bg-[#F5F5F5] text-[#B3B3B3]"
@@ -166,7 +176,7 @@ const Info: React.FC = () => {
             </button>
             <button
               onClick={() => handleGestationalDiabetesChange("아니요")}
-              className={`w-full py-2 rounded-lg ${
+              className={`w-full py-4 rounded-lg ${
                 gestationalDiabetes === "아니요"
                   ? "bg-[#EAE6FF] text-[#4331A4]"
                   : "bg-[#F5F5F5] text-[#B3B3B3]"
@@ -179,7 +189,7 @@ const Info: React.FC = () => {
 
         <button
           onClick={handleSubmit}
-          className={`w-full mt-28 py-4 tb:py-5 lg:py-6 text-white rounded-xl font-medium ${
+          className={`w-full web:mt-32 mt-28 py-4 tb:py-5 lg:py-6 text-white rounded-xl font-medium ${
             dday && births && gestationalDiabetes
               ? "bg-[#8A77F4]"
               : "bg-[#8A77F4] opacity-60 cursor-not-allowed"
