@@ -148,23 +148,29 @@ const Main: React.FC = () => {
     return (
       <div
         key={id}
-        className="flex flex-row w-full h-full justify-between items-center px-4 py-6 bg-[#F5F5F5] border-none rounded-2xl"
+        className="flex flex-row w-full h-full justify-between items-center px-4 py-4 bg-[#F5F5F5] border-none rounded-xl"
       >
         <div className="flex flex-row justify-between gap-4 items-center">
-          <h2 className="font-bold text-lg text-[#B3B3B3]">{timeline}</h2>
+          <h2 className="font-medium 2xs:text-sm xs:text-base 2sm:text-base text-lg text-[#B3B3B3]">
+            {timeline}
+          </h2>
           <p className="text-sm text-black font-semibold">
             {cal ? `${cal} kcal` : ""}
           </p>
-          {loading === id && <p>이미지 분석 중...</p>}
+          {loading === id && <p className="text-xs">loading...</p>}
         </div>
         {cal.length < 1 && (
-          <label className="flex flex-col items-center cursor-pointer mt-2">
-            <img src={addIcon.src} alt="Add" className="w-8 h-8" />
+          <label className="flex flex-col items-center cursor-pointer">
+            <img
+              src={addIcon.src}
+              alt="Add"
+              className="2xs:w-4 2xs:h-4 2sm:w-4 2sm:h-4 w-8 h-8"
+            />
             <input
               id={`upload-${id}`}
               type="file"
               accept="image/*"
-              className="hidden"
+              className="hidden text-sm"
               onChange={(e) => handleImageUpload(id, e)}
             />
           </label>
@@ -175,13 +181,8 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen bg-white">
+      <div className="w-full min-h-screen bg-white web:pb-16 pb-10">
         <div className="w-full bg-[#ECE0FF] relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 2xs:pt-16 xs:pt-20 pt-20 pb-8">
-          <div className="flex justify-end mb-4">
-            <div className="flex max-w-fit text-sm bg-[#B390FD] text-white font-semibold leading-normal px-4 py-2 rounded-full">
-              22 weeks and 4 days pregnant
-            </div>
-          </div>
           <h1 className="text-2xl text-black font-semibold leading-normal">
             Pigeon,
             <br />
@@ -189,7 +190,7 @@ const Main: React.FC = () => {
           </h1>
           {getWeightStatusText()}
           <div className="w-full flex flex-row pt-8 justify-between gap-4">
-            <div className="flex flex-row gap-6">
+            <div className="flex flex-row xs:gap-4 2sm:gap-4 gap-6">
               <div>
                 <CaloriesChart totalCalories={parseFloat(getTotalCalories())} />
               </div>
@@ -197,20 +198,26 @@ const Main: React.FC = () => {
               <div>
                 <ul className="flex flex-col gap-3">
                   <li>
-                    <p className="text-[#AFA2C5] font-medium text-sm">Goal</p>
-                    <p className="text-[#0000008F] font-semibold text-base">
+                    <p className="text-[#AFA2C5] font-medium 2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
+                      Goal
+                    </p>
+                    <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
                       kcal
                     </p>
                   </li>
                   <li>
-                    <p className="text-[#AFA2C5] font-medium text-sm">Eat</p>
-                    <p className="text-[#0000008F] font-semibold text-base">
+                    <p className="text-[#AFA2C5] font-medium  2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
+                      Eat
+                    </p>
+                    <p className="text-[#0000008F] font-semibold  2xs:text-xs xs:text-xs 2sm:text-xs text-base">
                       {getTotalCalories()}kcal
                     </p>
                   </li>
                   <li>
-                    <p className="text-[#AFA2C5] font-medium text-sm">Left</p>
-                    <p className="text-[#0000008F] font-semibold text-base">
+                    <p className="text-[#AFA2C5] font-medium 2xs:text-[0.68rem xs:text-[0.8rem]  2sm:text-[0.8rem] text-sm">
+                      Left
+                    </p>
+                    <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
                       kcal
                     </p>
                   </li>
@@ -218,11 +225,15 @@ const Main: React.FC = () => {
               </div>
             </div>
             <div>
-              <img src={preg.src} alt="preg" className="w-[8.4rem] h-auto" />
+              <img
+                src={preg.src}
+                alt="preg"
+                className="absolute web:right-6 web:bottom-[4.4rem] web:w-[8.8rem] 2xs:right-4 2xs:bottom-[4.6rem] 2xs:w-[6.4rem] xs:right-4 xs:bottom-[4.6rem] xs:w-[7.2rem]  2sm:right-3 2sm:bottom-[4.6rem] 2sm:w-32 w-[8.4rem] h-auto"
+              />
             </div>
           </div>
 
-          <div className="mt-10 w-full flex flex-col relative">
+          <div className="web:pt-16 w-full flex flex-col relative">
             <label htmlFor="name" className=""></label>
             <div className="relative w-full">
               <input
@@ -231,24 +242,28 @@ const Main: React.FC = () => {
                 value={menuName}
                 placeholder="Can I eat this food?"
                 onChange={handleMenuNameChange}
-                className="mt-2 px-4 py-5 pl-4 text-black placeholder-[#B3B3B3] rounded-xl w-full relative flex items-center justify-center"
+                className="mt-2 px-4 py-4 pl-4 text-black placeholder-[#B3B3B3] rounded-xl w-full relative flex items-center justify-center"
                 required
               />
               <button
                 onClick={handleManualSubmit}
                 className="absolute right-5 top-1/2 transform -translate-y-1/2 pt-2"
               >
-                <img src={searchIcon.src} alt="Search" className="w-5 h-5" />
+                <img
+                  src={searchIcon.src}
+                  alt="Search"
+                  className="w-4 h-4 2sm:w-5 2sm:h-5"
+                />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="bg-white relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 py-8">
+        <div className="bg-white relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 pt-8 pb-16">
           <h3 className="text-lg text-black items-end font-semibold leading-normal mb-4">
             A daily diet
           </h3>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 2sm:gap-3 gap-4">
             {["breakfast", "lunch", "dinner", "snack"].map((meal) => (
               <div key={meal} className="flex flex-col items-center">
                 {renderCard(

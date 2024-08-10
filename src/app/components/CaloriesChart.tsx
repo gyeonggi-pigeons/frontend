@@ -73,7 +73,7 @@ const CaloriesChart: React.FC<CaloriesChartProps> = ({ totalCalories }) => {
   };
 
   return (
-    <div className="w-40 h-auto">
+    <div className="2xs:w-28 xs:w-32 2sm:w-36 web:w-48 h-auto">
       <Bar data={data} options={options} />
     </div>
   );
