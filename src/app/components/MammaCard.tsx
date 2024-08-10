@@ -10,7 +10,7 @@ const MammaCard: React.FC<CardProps> = ({ id, menu }) => {
   return (
     <div
       key={id}
-      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#615698] border rounded-xl shadow-md"
+      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#8e81d3] border rounded-xl shadow-md"
     >
       <div>
         <h2 className="font-bold sm:text-base text-lg text-white">{menu}</h2>

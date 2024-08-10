@@ -39,27 +39,31 @@ const Input: React.FC = () => {
   return (
     <>
       <div className="w-full h-screen bg-gray-200 relative flex flex-col 2xs:px-8 xs:px-10 2sm:px-7 sm:px-12 tb:px-24 lg:px-32 xl:px-48 2xs:pt-20 xs:pt-24 pt-28 tb:pt-28 lg:pt-36 pb-8 items-center justify-center">
-        <h1 className="text-4xl font-black">INPUT</h1>
+        <h1 className="text-4xl font-black text-black">INPUT</h1>
 
         <div className="w-full flex flex-col pt-8">
-          <label htmlFor="age">이름</label>
+          <label htmlFor="age" className="text-black">
+            이름
+          </label>
           <input
             type="text"
             id="name"
             value={name}
             placeholder="이름을 입력해주세요"
             onChange={handleNameChange}
-            className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
+            className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 text-black border border-gray-300 rounded-xl"
             required
           />
-          <label htmlFor="birth">생년월일</label>
+          <label htmlFor="birth" className="text-black">
+            생년월일
+          </label>
           <input
             type="text"
             id="birth"
             value={birth}
             placeholder="생년월일을 입력해주세요 (YYYYMMDD)"
             onChange={handleBirthChange}
-            className="tb:w-[32rem] lg:w-[32rem] mt-2 p-2 border border-gray-300 rounded-xl"
+            className="tb:w-[32rem] lg:w-[32rem] mt-2 p-2 text-black border border-gray-300 rounded-xl"
             required
           />
         </div>

@@ -92,22 +92,26 @@ const Check: React.FC = () => {
   return (
     <>
       <div className="w-full h-screen bg-gray-200 relative flex flex-col 2xs:px-8 xs:px-10 2sm:px-7 sm:px-12 tb:px-24 lg:px-32 xl:px-48 2xs:pt-20 xs:pt-24 pt-28 tb:pt-28 lg:pt-36 pb-8 items-center justify-center">
-        <h1 className="text-4xl font-black">
+        <h1 className="text-4xl font-black text-black">
           당신의 이번주 변화를 보여드려요!
         </h1>
 
         <div className="w-full flex flex-col pt-8">
-          <label htmlFor="age">체중 입력하실?</label>
+          <label htmlFor="age" className="text-black">
+            체중 입력하실?
+          </label>
           <input
             type="text"
             id="weight"
             value={weight}
             placeholder="체중을 입력해주세요"
             onChange={handleWeightChange}
-            className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
+            className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 text-black border border-gray-300 rounded-xl"
           />
           <button onClick={handleAddWeight}>추가</button>
-          <h3 className="mt-20 text-bold text-xl">점선은 표준 그래프</h3>
+          <h3 className="mt-20 text-bold text-xl text-black">
+            점선은 표준 그래프
+          </h3>
           <p className="text-bold text-base">대충 그래프 ui</p>
           <p>대충 게이지 ui</p>
           <div className="chart">

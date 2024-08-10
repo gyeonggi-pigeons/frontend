@@ -99,10 +99,10 @@ const Mamma: React.FC = () => {
 
   return (
     <div className="w-full h-screen bg-gray-200 relative flex flex-col 2xs:px-8 xs:px-10 2sm:px-7 sm:px-12 tb:px-24 lg:px-32 xl:px-48 2xs:pt-20 xs:pt-24 pt-28 tb:pt-28 lg:pt-36 pb-8 items-center justify-center">
-      <h1 className="text-4xl font-black">당신의 맘마</h1>
+      <h1 className="text-4xl font-black text-black">당신의 맘마</h1>
 
       <div className="manual-input w-full px-8 flex flex-col">
-        <label>직접 입력</label>
+        <label className="text-black">직접 입력</label>
         <input
           type="text"
           value={menuName}
@@ -111,14 +111,14 @@ const Mamma: React.FC = () => {
         />
         <button
           onClick={handleManualSubmit}
-          className="flex w-full h-12 mt-8 bg-[#968ad3] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
+          className="flex w-full h-12 mt-8 bg-[#5d548e] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
         >
           메뉴 이름 제출
         </button>
 
         {/* 이미지 업로드 */}
         <div className="image-upload flex flex-col gap-5">
-          <label>사진 선택</label>
+          <label className="text-black">사진 선택</label>
           <input
             type="file"
             accept="image/*"
