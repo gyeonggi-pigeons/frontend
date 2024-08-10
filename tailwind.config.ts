@@ -20,7 +20,7 @@ const config: Config = {
         web: { min: "561px" }, // Web
       },
       fontFamily: {
-        customFont: ["SUIT-Regular", "normal"],
+        customFont: ["SUIT-Regular", "sans-serif"],
       },
     },
   },

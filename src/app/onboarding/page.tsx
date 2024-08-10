@@ -276,7 +276,7 @@ const Onboarding: React.FC = () => {
             <div className="fixed inset-0 bg-black opacity-20 z-40"></div>
           )}
           {bottomSheetVisible && (
-            <div className="fixed bottom-0 left-0 w-full 2xs:h-[52vh] xs:h-[54vh] 2sm:h-[50vh] web:h-[56vh] web:px-20 bg-white 2xs:px-12 xs:px-8 2sm:px-10 pt-4 pb-6 rounded-t-3xl shadow-lg z-50">
+            <div className="fixed bottom-0 left-0 w-full 2xs:h-[52vh] xs:h-[54vh] 2sm:h-[50vh] web:h-[56vh] web:px-20 bg-white 2xs:px-12 xs:px-8 2sm:px-10 pt-4 pb-6 2xs:pb-10 xs:pb-10 2sm:pb-10 rounded-t-3xl shadow-lg z-50">
               <h3 className="my-6 text-[#1E1E1E] font-semibold text-sm web:text-base leading-normal">
                 Select your usual activity level.
               </h3>
