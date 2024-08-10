@@ -38,7 +38,7 @@ const Info: React.FC = () => {
       setDday("");
       setBirths("");
       setGestationalDiabetes("");
-      router.push("/");
+      router.push("/main");
     } catch (error) {
       console.error("Error submitting recommendation:", error);
       alert("Error submitting elements");
