@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Menu: React.FC = () => {
+const Input: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [birth, setBirth] = useState<string>("");
   const router = useRouter();
@@ -74,4 +74,4 @@ const Menu: React.FC = () => {
   );
 };
 
-export default Menu;
+export default Input;
