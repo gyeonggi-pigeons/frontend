@@ -9,6 +9,7 @@ const Mamma: React.FC = () => {
 
   const [menuName, setMenuName] = useState<string>("");
   const [allMenus, setAllMenus] = useState<string[]>([]);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,6 +29,12 @@ const Mamma: React.FC = () => {
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
 
     setLoading(true);
     setError(null);
@@ -140,6 +147,17 @@ const Mamma: React.FC = () => {
             </ul>
           </div>
         )} */}
+
+        {imagePreview && (
+          <div className="image-preview mt-4">
+            <p>미리보기:</p>
+            <img
+              src={imagePreview}
+              alt="미리보기 이미지"
+              className="w-32 h-32 object-cover rounded-lg"
+            />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {allMenus.map((menu, index) => (
