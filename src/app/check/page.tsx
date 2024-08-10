@@ -135,7 +135,7 @@ const Check: React.FC = () => {
             onClick={handleInputClick}
             className="w-full 2xs:mt-16 xs:mt-12 2sm:mt-12 mt-20 py-4 2xs:text-[12px] xs:text-[14px] 2sm:text-[16px] rounded-xl font-medium bg-[#8A77F4] text-white"
           >
-            Enter today's weight
+            Enter today&apos;s weight
           </button>
         </div>
         <div className="bg-white relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 py-8">
@@ -145,8 +145,8 @@ const Check: React.FC = () => {
                 Weight gain rate appropriate 👍
               </h3>
               <p className="text-xs text-[#757575] font-normal leading-normal">
-                During pregnancy, it's natural for your weight to increase due
-                to the rise in{" "}
+                During pregnancy, it&apos;s natural for your weight to increase
+                due to the rise in
                 <span className="text-xs text-[#7B63FF] font-bold leading-normal">
                   blood volume and the expansion of breast tissue.
                 </span>
@@ -158,7 +158,7 @@ const Check: React.FC = () => {
                 Weight gain rate increased rapidly 📈
               </h3>
               <p className="text-xs text-[#757575] font-normal leading-normal">
-                Don't worry! During the second trimester, a rapid weight
+                Don&apos;t worry! During the second trimester, a rapid weight
                 increase can occur due to{" "}
                 <span className="text-xs text-[#7B63FF] font-bold leading-normal">
                   increased blood volume and preparation for breastfeeding.
@@ -178,7 +178,7 @@ const Check: React.FC = () => {
       {bottomSheetVisible && (
         <div className="fixed bottom-0 left-0 w-full 2xs:h-[48vh] xs:h-[56vh] 2sm:h-[50vh] web:h-[56vh] web:px-20 bg-white 2xs:px-12 xs:px-8 2sm:px-10 pt-4 pb-6 rounded-t-3xl shadow-lg z-50">
           <h3 className="my-6 text-[#1E1E1E] font-semibold text-sm web:text-base leading-normal">
-            Please enter today's weight
+            Please enter today&apos;s weight
           </h3>
 
           <div className="w-full flex flex-col pt-8">
