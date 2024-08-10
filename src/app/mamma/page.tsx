@@ -71,7 +71,7 @@ const Mamma: React.FC = () => {
                   content: [
                     {
                       type: "text",
-                      text: "사진에 있는 모든 음식 이름을 재료를 제외하고 알려줘. 답변은 음식 이름만 쉼표로 구분하여 나열해줘.",
+                      text: "사진에 있는 모든 음식의 칼로리를 합산한 값을 수치로만 알려줘.",
                     },
                     {
                       type: "image_url",
@@ -160,8 +160,17 @@ const Mamma: React.FC = () => {
         )} */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allMenus.map((menu, index) => (
-            <MammaCard id={index.toString()} key={index} menu={menu} />
+          {allMenus.map((timeline, index) => (
+            <>
+              <MammaCard
+                id={index.toString()}
+                key={index}
+                timeline="Breakfast"
+              />
+              <MammaCard id={index.toString()} key={index} timeline="Lunch" />
+              <MammaCard id={index.toString()} key={index} timeline="Dinner" />
+              <MammaCard id={index.toString()} key={index} timeline="Snacks" />
+            </>
           ))}
         </div>
       </div>
