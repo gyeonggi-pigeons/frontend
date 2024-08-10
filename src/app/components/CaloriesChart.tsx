@@ -30,8 +30,11 @@ const options: ChartOptions<"bar"> = {
     y: {
       beginAtZero: true,
       ticks: {
-        callback: function (value: number) {
-          return value + " kcal";
+        callback: function (tickValue: string | number) {
+          if (typeof tickValue === "number") {
+            return tickValue + " kcal";
+          }
+          return tickValue;
         },
       },
     },
