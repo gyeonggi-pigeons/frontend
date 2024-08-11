@@ -15,22 +15,6 @@ const Searchmenu: React.FC = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    if (menu.trim() === "") {
-      alert("메뉴를 입력해주세요.");
-      return;
-    }
-
-    try {
-      alert("완료되었습니다!");
-      setMenu("");
-      router.push("/");
-    } catch (error) {
-      console.error("Error submitting recommendation:", error);
-      alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
-    }
-  };
-
   const handleBack = () => {
     router.back();
   };
@@ -57,10 +41,7 @@ const Searchmenu: React.FC = () => {
                 className="mt-2 px-4 py-4 pl-4 text-[#1E1E1E] bg-[#F5F5F5] font-semibold rounded-xl w-full relative flex items-center justify-center"
                 required
               />
-              <button
-                onClick={handleSubmit}
-                className="absolute right-5 top-1/2 transform -translate-y-1/2 pt-2"
-              >
+              <button className="absolute right-5 top-1/2 transform -translate-y-1/2 pt-2">
                 <img
                   src={searchIcon.src}
                   alt="Search"

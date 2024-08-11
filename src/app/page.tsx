@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-// import SplashScreen from "./components/SplashScreen";
+import HeadMeta from "./components/HeadMeta/HeadMeta";
 
 const Main: React.FC = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const Main: React.FC = () => {
 
   return (
     <>
-      {/* <SplashScreen /> */}
+      <HeadMeta />
       <div className="w-full h-screen bg-[#FEFFFE] relative flex flex-col 2xs:px-8 xs:px-6 2sm:px-6 px-8 2xs:pt-16 xs:pt-20 pt-20 pb-8 items-start justify-start">
         <h3 className="text-lg text-[#7B63FF] font-semibold leading-normal mb-2">
           Hello!
