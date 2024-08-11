@@ -72,7 +72,7 @@ const Searchmenu: React.FC = () => {
             <h3 className="text-lg text-[#FA9804] items-end font-semibold leading-normal mb-2">
               Caution
             </h3>
-            <p className="font-normal leading-normal">
+            <p className="font-normal leading-normal text-[#414141]">
               Caution is needed for those with gestational diabetes, like you.
               To prevent ketosis, it&apos;s recommended to have a snack with
               appropriate carbohydrates rather than protein before bedtime
@@ -86,7 +86,7 @@ const Searchmenu: React.FC = () => {
             <h3 className="text-lg text-[#00B628] items-end font-semibold leading-normal mb-4">
               Recommended
             </h3>
-            <p className="font-normal leading-normal">
+            <p className="font-normal leading-normal text-[#414141]">
               Suitable for meeting today&apos;s remaining nutrients and
               calories. High in protein, helping to maintain satiety.
             </p>
