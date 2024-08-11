@@ -15,21 +15,28 @@ const Dinner: React.FC = () => {
   const [menu, setMenu] = useState<string>("");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [food_items, setFoodItems] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchDinnerData = async () => {
       try {
         const response = await axios.get(
-          "http://mom-ma.fly.dev/user-food-per-time?token=1&date=2024-08-11&time=D"
+          "https://mom-ma.fly.dev/user-food-per-time?token=1&date=2024-08-11&time=D"
         );
-        const { total_carbohydrates, total_protein, total_fat, total_energy } =
-          response.data;
+        const {
+          food_items,
+          total_carbohydrates,
+          total_protein,
+          total_fat,
+          total_energy,
+        } = response.data;
         setNutritionData({
           total_carbohydrates,
           total_protein,
           total_fat,
           total_energy,
         });
+        setFoodItems(food_items);
       } catch (error) {
         console.error("Error fetching dinner data:", error);
       }
@@ -38,27 +45,67 @@ const Dinner: React.FC = () => {
     fetchDinnerData();
   }, []);
 
-  const handleImageSelect = (imageSource: string) => {
+  const handleImageSelect = async (imageSource: string) => {
     setSelectedImage(imageSource);
     setIsAnalyzing(true);
-
+    // open galery
+    const file = document.createElement("input");
+    file.type = "file";
+    file.accept = "image/*";
+    file.click();
+    file.onchange = async (e) => {
+      console.log(e);
+      const f = file.files?.[0];
+      if (f?.type == "image/jpeg" || f?.type == "image/png") {
+        // create a new form-data
+        const formData = new FormData();
+        formData.append("image", f);
+        formData.append("time", "D");
+        formData.append("date", "2024-08-11");
+        try {
+          const response = await axios.post(
+            "http://mom-ma.fly.dev/image-upload?token=1",
+            formData
+          );
+          // const {
+          //   total_carbohydrates,
+          //   total_protein,
+          //   total_fat,
+          //   total_energy,
+          // } = response.data;
+          // setNutritionData({
+          //   total_carbohydrates,
+          //   total_protein,
+          //   total_fat,
+          //   total_energy,
+          // });
+          window.location.reload();
+          setIsAnalyzing(false);
+        } catch (error) {
+          console.error("Error analyzing image:", error);
+          setIsAnalyzing(false);
+        }
+      }
+    };
     setTimeout(() => {
       // Simulate an API call to analyze the image
       axios
         .post("http://mom-ma.fly.dev/image-upload", { image: imageSource })
         .then((response) => {
-          const {
-            total_carbohydrates,
-            total_protein,
-            total_fat,
-            total_energy,
-          } = response.data;
-          setNutritionData({
-            total_carbohydrates,
-            total_protein,
-            total_fat,
-            total_energy,
-          });
+          // const {
+          //   total_carbohydrates,
+          //   total_protein,
+          //   total_fat,
+          //   total_energy,
+          // } = response.data;
+          // setNutritionData({
+          //   total_carbohydrates,
+          //   total_protein,
+          //   total_fat,
+          //   total_energy,
+          // });
+          // refresh the page
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error analyzing image:", error);
@@ -79,6 +126,13 @@ const Dinner: React.FC = () => {
 
   const handleSave = () => {
     router.push(`/mainmore?dinnerCalories=${nutritionData.total_energy}`);
+  };
+
+  const handleRemoveElement = async (id: string) => {
+    console.log(id);
+    await axios.delete(`https://mom-ma.fly.dev/user-food/${id}`);
+    const newFoodItems = food_items.filter((food) => food.id != id);
+    setFoodItems(newFoodItems);
   };
 
   return (
@@ -135,10 +189,40 @@ const Dinner: React.FC = () => {
               <h3 className="text-lg text-black items-end font-semibold leading-normal mb-4">
                 A daily diet
               </h3>
-              <div className="w-full flex items-center justify-center">
-                <p className="text-[#8792B0] font-semibold text-base">
-                  No meal recorded yet
-                </p>
+              <div className="w-full flex items-center justify-center flex-col">
+                {food_items.map((food, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex flex-row justify-between items-center px-4 py-4 border-[1px] border-black rounded-xl cursor-pointer text-black"
+                  >
+                    <div className="flex flex-col justify-between gap-4 items-left">
+                      <h2 className="font-medium text-lg text-black">
+                        {food.food.food_name}
+                      </h2>
+                      <h3>
+                        {food.serving} serving ({food.food.food_weight}
+                        {food.food.food_weight_type})
+                      </h3>
+                    </div>
+                    <div className="flex flex-row gap-4">
+                      <h2>
+                        {Math.floor(
+                          (food.food.energy * food.food.food_weight) /
+                            food.food.nutrition_content_standard
+                        )}
+                        kcal
+                      </h2>
+                      <button onClick={() => handleRemoveElement(food.id)}>
+                        X
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {!food_items.length && (
+                  <p className="text-[#8792B0] font-semibold text-base">
+                    No meal recorded yet
+                  </p>
+                )}
 
                 {selectedImage && (
                   <div className="w-full mt-4 flex justify-center">
@@ -159,9 +243,10 @@ const Dinner: React.FC = () => {
                 )}
               </div>
               <button
-                className="w-full  mt-28 py-4  text-white rounded-xl font-medium 
-           bg-[#8A77F4] 
-          "
+                className="w-full  mt-28 py-4  text-white rounded-xl font-medium bg-[#8A77F4]"
+                onClick={() => {
+                  window.location.href = "/mainmore";
+                }}
               >
                 Meal recorded
               </button>

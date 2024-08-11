@@ -7,7 +7,7 @@ import searchIcon from "../../../public/images/icon-search.png";
 import addIcon from "../../../public/images/icon-plus.png";
 import CaloriesChart from "../components/CaloriesChart";
 import BottomTabs from "../components/BottomTabs";
-
+import { useEffect } from "react";
 const Main: React.FC = () => {
   const router = useRouter();
   const [menuName, setMenuName] = useState<string>("");
@@ -18,12 +18,37 @@ const Main: React.FC = () => {
     snack: "",
   });
   const [calories, setCalories] = useState<{ [key: string]: string }>({
-    breakfast: "660",
-    lunch: "700",
+    breakfast: "",
+    lunch: "",
+    dinner: "",
+    snack: "",
   });
   const [weightStatus, setWeightStatus] = useState<number>(-7.3);
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [totalCalories, setTotalCalories] = useState<number>(0);
+  const [leftCalories, setLeftCalories] = useState<number>(0);
+
+  useEffect(() => {
+    axios.get("https://mom-ma.fly.dev/user-profile?token=1").then((res) => {
+      setCalories({
+        breakfast: res.data.breakfast_calories
+          ? Math.floor(res.data.breakfast_calories).toString()
+          : "",
+        lunch: res.data.lunch_calories
+          ? Math.floor(res.data.lunch_calories).toString()
+          : "",
+        dinner: res.data.dinner_calories
+          ? Math.floor(res.data.dinner_calories).toString()
+          : "",
+        snack: res.data.snack_calories
+          ? Math.floor(res.data.snack_calories).toString()
+          : "",
+      });
+      setTotalCalories(Math.floor(res.data.today_total_calories));
+      setLeftCalories(2340 - Math.floor(res.data.today_total_calories));
+    });
+  }, []);
 
   const handleMenuNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMenuName(e.target.value);
@@ -41,12 +66,12 @@ const Main: React.FC = () => {
     }
   };
 
-  const getTotalCalories = () => {
-    const total = Object.values(calories)
-      .map((cal) => parseFloat(cal))
-      .reduce((acc, val) => acc + val, 0);
-    return total.toFixed(1);
-  };
+  // const getTotalCalories = () => {
+  //   const total = Object.values(calories)
+  //     .map((cal) => parseFloat(cal))
+  //     .reduce((acc, val) => acc + val, 0);
+  //   return total.toFixed(1);
+  // };
 
   const getWeightStatusText = () => {
     if (weightStatus < 0) {
@@ -112,7 +137,9 @@ const Main: React.FC = () => {
           <div className="w-full flex flex-row pt-8 justify-between gap-4">
             <div className="flex flex-row xs:gap-4 2sm:gap-4 gap-6">
               <div>
-                <CaloriesChart totalCalories={parseFloat(getTotalCalories())} />
+                <CaloriesChart
+                  totalCalories={parseFloat(totalCalories.toString())}
+                />
               </div>
 
               <div>
@@ -122,7 +149,7 @@ const Main: React.FC = () => {
                       Goal
                     </p>
                     <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      kcal
+                      2340kcal
                     </p>
                   </li>
                   <li>
@@ -130,7 +157,7 @@ const Main: React.FC = () => {
                       Eat
                     </p>
                     <p className="text-[#0000008F] font-semibold  2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      {getTotalCalories()}kcal
+                      {totalCalories}kcal
                     </p>
                   </li>
                   <li>
@@ -138,7 +165,7 @@ const Main: React.FC = () => {
                       Left
                     </p>
                     <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      kcal
+                      {leftCalories}kcal
                     </p>
                   </li>
                 </ul>
