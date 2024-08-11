@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import active1 from "../../../public/images/img-active-1.png";
 import active2 from "../../../public/images/img-active-2.png";
 import active3 from "../../../public/images/img-active-3.png";
+import active1a from "../../../public/images/img-active-11.png";
+import active2a from "../../../public/images/img-active-21.png";
+import active3a from "../../../public/images/img-active-31.png";
 import prev from "../../../public/images/icon-prev.png";
 
 const Onboarding: React.FC = () => {
@@ -74,6 +77,19 @@ const Onboarding: React.FC = () => {
     } catch (error) {
       console.error("Error submitting recommendation:", error);
       alert("Error submitting elements");
+    }
+  };
+
+  const getImageForPregnancyState = () => {
+    switch (preg) {
+      case "임신 준비중":
+        return active1a.src;
+      case "임신 중":
+        return active2a.src;
+      case "출산 이후":
+        return active3a.src;
+      default:
+        return active1.src;
     }
   };
 
@@ -206,36 +222,35 @@ const Onboarding: React.FC = () => {
               </h3>
               <ul className="w-full flex flex-row 2xs:gap-6 xs:gap-5 2sm:gap-4 gap-8 justify-center items-center">
                 <li
-                  className={`2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center ${
-                    preg === "임신 준비중" ? "bg-[#EAE6FF]" : "bg-[#F5F5F5]"
-                  }`}
+                  className="2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center 
+                  "
                   onClick={() => handlePregnancySelect("임신 준비중")}
                 >
                   <img
-                    src={active1.src}
+                    src={preg === "임신 준비중" ? active1a.src : active1.src}
                     alt=""
-                    className="2xs:w-[30vh] w-[32vh] h-auto py-4 rounded-md"
+                    className="2xs:w-[30vh] w-24 h-auto py-4 rounded-md"
                   />
                   <p
-                    className={`text-xs ${
+                    className={`text-xs text-center ${
                       preg === "임신 준비중"
                         ? "text-[#6047E7] font-bold"
                         : "text-[#B3B3B3] font-normal"
                     }`}
                   >
-                    Preparing for pregnancy
+                    Preparing
+                    <br />
+                    for pregnancy
                   </p>
                 </li>
                 <li
-                  className={`2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center ${
-                    preg === "임신 중" ? "bg-[#EAE6FF]" : "bg-[#F5F5F5]"
-                  }`}
+                  className="2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center"
                   onClick={() => handlePregnancySelect("임신 중")}
                 >
                   <img
-                    src={active2.src}
+                    src={preg === "임신 중" ? active2a.src : active2.src}
                     alt=""
-                    className="2xs:w-[30vh] w-[32vh] h-auto py-4 rounded-md"
+                    className="2xs:w-[30vh] w-32 h-auto py-4 rounded-md"
                   />
                   <p
                     className={`text-xs ${
@@ -248,15 +263,13 @@ const Onboarding: React.FC = () => {
                   </p>
                 </li>
                 <li
-                  className={`2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center ${
-                    preg === "출산 이후" ? "bg-[#EAE6FF]" : "bg-[#F5F5F5]"
-                  }`}
+                  className="2xs:w-[4.4rem] 2xs:h-[4.4rem] xs:w-20 xs:h-20 2sm:w-24 2sm:h-24 w-32 h-32 rounded-full flex flex-col gap-1 items-center justify-center"
                   onClick={() => handlePregnancySelect("출산 이후")}
                 >
                   <img
-                    src={active3.src}
+                    src={preg === "출산 이후" ? active3a.src : active3.src}
                     alt=""
-                    className="2xs:w-[30vh] w-[32vh] h-auto py-4 rounded-md"
+                    className="2xs:w-[30vh] w-32 h-auto py-4 rounded-md"
                   />
                   <p
                     className={`text-xs ${

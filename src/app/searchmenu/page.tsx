@@ -7,7 +7,7 @@ import SearchCard from "../components/SearchCard";
 
 const Searchmenu: React.FC = () => {
   const router = useRouter();
-  const [menu, setMenu] = useState<string>("");
+  const [menu, setMenu] = useState<string>("함박 스테이크");
 
   const handleMenuChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length <= 10) {
