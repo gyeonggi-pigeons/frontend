@@ -229,7 +229,7 @@ const Onboarding: React.FC = () => {
                   <img
                     src={preg === "임신 준비중" ? active1a.src : active1.src}
                     alt=""
-                    className="2xs:w-[30vh] w-24 h-auto py-4 rounded-md"
+                    className="flex 2xs:w-[30vh] w-[5rem] h-auto py-4 rounded-md"
                   />
                   <p
                     className={`text-xs text-center ${
@@ -250,7 +250,7 @@ const Onboarding: React.FC = () => {
                   <img
                     src={preg === "임신 중" ? active2a.src : active2.src}
                     alt=""
-                    className="2xs:w-[30vh] w-32 h-auto py-4 rounded-md"
+                    className="flex 2xs:w-[30vh] w-[8.4rem] h-auto py-4 rounded-md"
                   />
                   <p
                     className={`text-xs ${
@@ -269,16 +269,18 @@ const Onboarding: React.FC = () => {
                   <img
                     src={preg === "출산 이후" ? active3a.src : active3.src}
                     alt=""
-                    className="2xs:w-[30vh] w-32 h-auto py-4 rounded-md"
+                    className="flex 2xs:w-[30vh] w-32 h-auto py-4 rounded-md"
                   />
                   <p
-                    className={`text-xs ${
+                    className={`text-xs text-center ${
                       preg === "출산 이후"
                         ? "text-[#6047E7] font-bold"
                         : "text-[#B3B3B3] font-normal"
                     }`}
                   >
-                    After having a baby
+                    After
+                    <br />
+                    having a baby
                   </p>
                 </li>
               </ul>
