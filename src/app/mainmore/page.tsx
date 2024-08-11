@@ -132,7 +132,9 @@ const Main: React.FC = () => {
           <h1 className="text-2xl text-black font-semibold leading-normal">
             Pigeon,
             <br />
-            You need to eat more food
+            {leftCalories
+              ? "You have consumed enough calories"
+              : "You need to eat more food"}
           </h1>
           {getWeightStatusText()}
           <div className="w-full flex flex-row pt-8 justify-between gap-4">
