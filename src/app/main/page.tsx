@@ -198,7 +198,7 @@ const Main: React.FC = () => {
               <div>
                 <ul className="flex flex-col gap-3">
                   <li>
-                    <p className="text-[#AFA2C5] font-medium 2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
+                    <p className="text-[#AFA2C5] font-normal 2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
                       Goal
                     </p>
                     <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
@@ -206,18 +206,18 @@ const Main: React.FC = () => {
                     </p>
                   </li>
                   <li>
-                    <p className="text-[#AFA2C5] font-medium  2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
+                    <p className="text-[#AFA2C5] font-normal  2xs:text-[0.68rem] xs:text-[0.8rem] 2sm:text-[0.8rem] text-sm">
                       Eat
                     </p>
-                    <p className="text-[#0000008F] font-semibold  2xs:text-xs xs:text-xs 2sm:text-xs text-base">
+                    <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
                       {getTotalCalories()}kcal
                     </p>
                   </li>
                   <li>
-                    <p className="text-[#AFA2C5] font-medium 2xs:text-[0.68rem xs:text-[0.8rem]  2sm:text-[0.8rem] text-sm">
+                    <p className="text-[#AFA2C5] font-normal 2xs:text-[0.68rem xs:text-[0.8rem]  2sm:text-[0.8rem] text-sm">
                       Left
                     </p>
-                    <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
+                    <p className="text-[#0000008F] bg-[#A6AFFF6E] text-center px-1 py-1 rounded-xl font-bold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
                       kcal
                     </p>
                   </li>

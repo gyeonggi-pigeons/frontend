@@ -74,7 +74,7 @@ const Searchmenu: React.FC = () => {
             </h3>
             <p className="font-normal leading-normal">
               Caution is needed for those with gestational diabetes, like you.
-              To prevent ketosis, it's recommended to have a snack with
+              To prevent ketosis, it&apos;s recommended to have a snack with
               appropriate carbohydrates rather than protein before bedtime
               (e.g., Korean rice cake)
             </p>
@@ -87,8 +87,8 @@ const Searchmenu: React.FC = () => {
               Recommended
             </h3>
             <p className="font-normal leading-normal">
-              Suitable for meeting today's remaining nutrients and calories.
-              High in protein, helping to maintain satiety.
+              Suitable for meeting today&apos;s remaining nutrients and
+              calories. High in protein, helping to maintain satiety.
             </p>
           </div>
         </div>
