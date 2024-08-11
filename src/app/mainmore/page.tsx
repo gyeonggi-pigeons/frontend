@@ -152,7 +152,7 @@ const Main: React.FC = () => {
                       Goal
                     </p>
                     <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      kcal
+                      2340 kcal
                     </p>
                   </li>
                   <li>
@@ -160,7 +160,7 @@ const Main: React.FC = () => {
                       Eat
                     </p>
                     <p className="text-[#0000008F] font-semibold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      0kcal
+                      {totalCalories} kcal
                     </p>
                   </li>
                   <li>
@@ -168,7 +168,7 @@ const Main: React.FC = () => {
                       Left
                     </p>
                     <p className="text-[#0000008F] bg-[#A6AFFF6E] text-center px-1 py-1 rounded-xl font-bold 2xs:text-xs xs:text-xs 2sm:text-xs text-base">
-                      kcal
+                      {leftCalories} kcal
                     </p>
                   </li>
                 </ul>
