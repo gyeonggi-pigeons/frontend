@@ -65,7 +65,7 @@ const Dinner: React.FC = () => {
         formData.append("date", "2024-08-11");
         try {
           const response = await axios.post(
-            "http://mom-ma.fly.dev/image-upload?token=1",
+            "https://mom-ma.fly.dev/image-upload?token=1",
             formData
           );
           // const {
@@ -91,7 +91,7 @@ const Dinner: React.FC = () => {
     setTimeout(() => {
       // Simulate an API call to analyze the image
       axios
-        .post("http://mom-ma.fly.dev/image-upload", { image: imageSource })
+        .post("https://mom-ma.fly.dev/image-upload", { image: imageSource })
         .then((response) => {
           // const {
           //   total_carbohydrates,
